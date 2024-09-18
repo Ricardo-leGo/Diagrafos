@@ -1,0 +1,25 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# Conjunto A y relación R
+A = ['a', 'b', 'c', 'd', 'e']
+R = [('a','a'), ('a','c'), ('a','d'), ('a','e'), 
+     ('b','b'), ('b','c'), ('b','d'), ('b','e'), 
+     ('c','c'), ('c','d'), ('c','e'), 
+     ('d','d'), ('e','e')]
+
+# Crear un grafo dirigido
+G = nx.DiGraph()
+
+# Agregar nodos y aristas
+G.add_nodes_from(A)
+G.add_edges_from(R)
+
+# Dibujar el grafo
+plt.figure(figsize=(16,12))
+pos = nx.spring_layout(G)  # disposición de los nodos
+nx.draw(G, pos, with_labels=True, node_size=100, node_color='lightblue', font_size=10, font_weight='bold', arrows=True, arrowstyle='->', arrowsize=10)
+
+# Mostrar el grafo
+plt.title("Diagrafo de la Relación R en el Conjunto A")
+plt.show()
